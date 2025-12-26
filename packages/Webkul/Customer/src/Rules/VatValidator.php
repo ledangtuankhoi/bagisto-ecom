@@ -63,6 +63,10 @@ class VatValidator
 
             $country = $formCountry;
             $number = $vatNumber;
+
+            if (! isset(self::$pattern_expression[$country])) {
+                return false;
+            }
         }
 
         return preg_match('/^'.self::$pattern_expression[$country].'$/', $number) > 0;

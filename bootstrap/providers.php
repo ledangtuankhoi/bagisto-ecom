@@ -29,6 +29,7 @@ return [
     Webkul\Inventory\Providers\InventoryServiceProvider::class,
     Webkul\MagicAI\Providers\MagicAIServiceProvider::class,
     Webkul\Marketing\Providers\MarketingServiceProvider::class,
+    Webkul\Marketplace\Providers\MarketplaceServiceProvider::class,
     Webkul\Notification\Providers\NotificationServiceProvider::class,
     Webkul\Payment\Providers\PaymentServiceProvider::class,
     Webkul\Paypal\Providers\PaypalServiceProvider::class,

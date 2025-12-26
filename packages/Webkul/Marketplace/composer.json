@@ -1,0 +1,25 @@
+{
+    "name": "webkul/marketplace",
+    "description": "Multi Vendor Marketplace for Bagisto",
+    "type": "bagisto-package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Webkul",
+            "email": "contact@webkul.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Webkul\\Marketplace\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Webkul\\Marketplace\\Providers\\MarketplaceServiceProvider"
+            ]
+        }
+    }
+}
