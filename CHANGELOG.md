@@ -1,18 +1,17 @@
 ## Unreleased
 
-- Replaced Apache services with Nginx.
+-   Replaced Apache services with Nginx.
 
-- Added support for [Bagisto](https://github.com/bagisto/bagisto) v2.3.6 and up.
+-   Added support for [Bagisto](https://github.com/bagisto/bagisto) v2.3.6 and up.
 
-## **v1.1.1 (15th of September 2025)** - *Release*
+## **v1.1.1 (15th of September 2025)** - _Release_
 
-- Added support for [Bagisto](https://github.com/bagisto/bagisto) v2.2.4 to v2.3.6.
+-   Added support for [Bagisto](https://github.com/bagisto/bagisto) v2.2.4 to v2.3.6.
 
-## **v1.1.0 (1st of April 2025)** - *Release*
+## **v1.1.0 (1st of April 2025)** - _Release_
 
-- Added support for [Bagisto](https://github.com/bagisto/bagisto) v2.2.4 and above.
+-   Added support for [Bagisto](https://github.com/bagisto/bagisto) v2.2.4 and above.
 
+## **v1.0.0 (29th of October 2024)** - _First Release_
 
-## **v1.0.0 (29th of October 2024)** - *First Release*
-
-- Added support for [Bagisto](https://github.com/bagisto/bagisto) v2.0.0 and above.
+-   Added support for [Bagisto](https://github.com/bagisto/bagisto) v2.0.0 and above.
