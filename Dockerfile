@@ -56,7 +56,13 @@ ARG user
 COPY ./.configs/nginx/pools/www.cnf /usr/local/etc/php-fpm.d/www.conf
 
 # adding user
-RUN useradd -G www-data,root -u $uid -d /home/$user $user
+# Sửa đoạn "adding user" từ dòng 59 thành:
+RUN if [ "$user" != "root" ]; then \
+    useradd -G www-data,root -u $uid -d /home/$user $user; \
+    else \
+    echo "User is root, skipping useradd"; \
+    fi
+
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
