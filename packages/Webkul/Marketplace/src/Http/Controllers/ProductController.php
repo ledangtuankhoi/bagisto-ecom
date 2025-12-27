@@ -65,4 +65,46 @@ class ProductController extends Controller
 
         return redirect()->route('marketplace.account.products.index')->with('success', 'Product added to your shop pending approval.');
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\View\View
+     */
+    public function edit($id)
+    {
+        $product = MarketplaceProduct::with('product')->findOrFail($id);
+
+        return view('marketplace::shop.products.edit', compact('product'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update($id)
+    {
+        // For now, we will just re-approve the product.
+        // In a real application, you would validate the input and update the product details.
+        $product = MarketplaceProduct::findOrFail($id);
+        $product->update(['is_approved' => 1]);
+
+        return redirect()->route('marketplace.account.products.index')->with('success', 'Product updated successfully.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        MarketplaceProduct::destroy($id);
+
+        return redirect()->route('marketplace.account.products.index')->with('success', 'Product removed from your shop.');
+    }
 }

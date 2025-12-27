@@ -4,10 +4,21 @@ namespace Webkul\Marketplace\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Webkul\Marketplace\Models\Seller;
-use Webkul\Marketplace\Models\MarketplaceProduct;
 
 class ShopController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index()
+    {
+        $sellers = Seller::where('is_approved', 1)->paginate(10);
+
+        return view('marketplace::shop.index', compact('sellers'));
+    }
+
     /**
      * Display the specified resource.
      *
@@ -18,15 +29,6 @@ class ShopController extends Controller
     {
         $seller = Seller::where('url', $url)->firstOrFail();
 
-        if (! $seller->is_approved) {
-            abort(404);
-        }
-
-        $products = MarketplaceProduct::with('product')
-            ->where('marketplace_seller_id', $seller->id)
-            ->where('is_approved', 1) // Only show approved products
-            ->paginate(12);
-
-        return view('marketplace::shop.index', compact('seller', 'products'));
+        return view('marketplace::shop.view', compact('seller'));
     }
 }

@@ -319,6 +319,19 @@
                                     @endif
                                 </div>
 
+                                @inject('marketplaceHelper', 'Webkul\Marketplace\Helpers\MarketplaceHelper')
+                                @php
+                                    $seller = $marketplaceHelper->getSellerByProduct($product);
+                                @endphp
+
+                                @if ($seller)
+                                    <div class="mt-2">
+                                        <a href="{{ route('marketplace.shop.view', $seller->url) }}" class="text-blue-600 hover:underline">
+                                            Sold by: {{ $seller->shop_title }}
+                                        </a>
+                                    </div>
+                                @endif
+
                                 {!! view_render_event('bagisto.shop.products.name.after', ['product' => $product]) !!}
 
                                 <!-- Rating -->

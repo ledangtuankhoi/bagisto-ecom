@@ -3,7 +3,7 @@
 namespace Webkul\Marketplace\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Webkul\Marketplace\DataGrids\SellerDataGrid;
+use Webkul\Marketplace\DataGrids\ProductDataGrid;
 use Webkul\Marketplace\Models\Seller;
 
 class SellerController extends Controller
@@ -42,5 +42,21 @@ class SellerController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function products($id)
+    {
+        if (request()->ajax()) {
+            return app(ProductDataGrid::class)->toJson();
+        }
+        
+        $seller = Seller::findOrFail($id);
+
+        return view('marketplace::admin.sellers.products.index', compact('seller'));
     }
 }

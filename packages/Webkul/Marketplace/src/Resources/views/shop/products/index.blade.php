@@ -18,6 +18,11 @@
                         <span class="icon-products text-xl"></span>
                         <span class="font-medium">Products</span>
                     </a>
+                    <a href="{{ route('marketplace.account.orders.index') }}"
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg">
+                        <span class="icon-orders text-xl"></span>
+                        <span class="font-medium">Orders</span>
+                    </a>
                 </nav>
             </div>
 
@@ -38,6 +43,7 @@
                                     <th class="py-3 px-4">Name</th>
                                     <th class="py-3 px-4">Price</th>
                                     <th class="py-3 px-4">Status</th>
+                                    <th class="py-3 px-4">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,6 +62,14 @@
                                             @else
                                                 <span class="text-yellow-600 font-bold text-xs uppercase">Pending</span>
                                             @endif
+                                        </td>
+                                        <td class="py-3 px-4">
+                                            <a href="{{ route('marketplace.account.products.edit', $link->id) }}" class="text-blue-600 hover:underline">Edit</a>
+                                            <form method="POST" action="{{ route('marketplace.account.products.delete', $link->id) }}" class="inline-block">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-red-600 hover:underline">Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

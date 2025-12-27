@@ -126,5 +126,14 @@ class SellerDataGrid extends DataGrid
                 return route('admin.marketplace.sellers.update', ['id' => $row->id, 'status' => 0]);
             },
         ]);
+
+        $this->addAction([
+            'icon'   => 'icon-eye',
+            'title'  => 'View Products',
+            'method' => 'GET',
+            'url'    => function ($row) {
+                return route('admin.marketplace.sellers.products', ['id' => $row->id]);
+            },
+        ]);
     }
 }

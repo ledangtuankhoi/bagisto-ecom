@@ -5,6 +5,8 @@ namespace Webkul\Marketplace\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
+use Webkul\Marketplace\Helpers\MarketplaceHelper;
+
 class MarketplaceServiceProvider extends ServiceProvider
 {
     /**
@@ -14,6 +16,9 @@ class MarketplaceServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton(MarketplaceHelper::class, function () {
+            return new MarketplaceHelper();
+        });
     }
 
     /**

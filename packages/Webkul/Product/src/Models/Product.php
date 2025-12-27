@@ -135,14 +135,23 @@ class Product extends Model implements ProductContract
     /**
      * The images that belong to the product.
      */
-    public function images(): HasMany
-    {
-        return $this->hasMany(ProductImageProxy::modelClass(), 'product_id')
-            ->orderBy('position');
-    }
-
-    /**
-     * The videos that belong to the product.
+        public function images(): HasMany
+        {
+            return $this->hasMany(ProductImageProxy::modelClass(), 'product_id')
+                ->orderBy('position');
+        }
+    
+        /**
+         * The marketplace product that belong to the product.
+         */
+        public function marketplace_product(): HasMany
+        {
+            return $this->hasMany(\Webkul\Marketplace\Models\MarketplaceProductProxy::modelClass());
+        }
+    
+        /**
+         * The videos that belong to the 
+     product.
      */
     public function videos(): HasMany
     {
